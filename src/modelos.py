@@ -1,10 +1,11 @@
-from dataclasses import dataclass, field
+python3 - << 'EOF'
+codigo = """from dataclasses import dataclass, field
 from typing import List
 
 
 @dataclass
 class Livro:
-    """Representa a entidade Livro no acervo da biblioteca."""
+    \"\"\"Representa a entidade Livro no acervo da biblioteca.\"\"\"
     titulo: str
     autor: str
     ano: int
@@ -24,7 +25,7 @@ class Livro:
 
 @dataclass
 class Usuario:
-    """Representa um usuário cadastrado na biblioteca."""
+    \"\"\"Representa um usuário cadastrado na biblioteca.\"\"\"
     id_usuario: str
     nome: str
     contato: str
@@ -36,3 +37,8 @@ class Usuario:
             f"ID: {self.id_usuario} | Nome: {self.nome} | "
             f"Contato: {self.contato} | Em posse de: [{livros}]"
         )
+"""
+with open("src/modelos.py", "w", encoding="utf-8") as f:
+    f.write(codigo)
+print("src/modelos.py atualizado em UTF-8 com sucesso!")
+EOF
