@@ -11,7 +11,6 @@ class Biblioteca:
     """Gerencia o acervo de livros, usuários, empréstimos e relatórios."""
 
     def __init__(self):
-        # Dicionários para busca rápida O(1) usando título normalizado e ID do usuário
         self.livros: Dict[str, Livro] = {}
         self.usuarios: Dict[str, Usuario] = {}
 
@@ -91,7 +90,6 @@ class Biblioteca:
         if livro.copias_disponiveis <= 0:
             raise BibliotecaErro(f"Todas as cópias de '{livro.titulo}' estão emprestadas no momento.")
 
-        # Efetiva o empréstimo
         livro.copias_disponiveis -= 1
         usuario.livros_emprestados.append(livro.titulo)
 
@@ -111,7 +109,6 @@ class Biblioteca:
         if livro.titulo not in usuario.livros_emprestados:
             raise BibliotecaErro(f"O usuário {usuario.nome} não possui empréstimo ativo de '{livro.titulo}'.")
 
-        # Efetiva a devolução
         livro.copias_disponiveis += 1
         usuario.livros_emprestados.remove(livro.titulo)
 
